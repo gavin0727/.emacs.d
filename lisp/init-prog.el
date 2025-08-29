@@ -1,13 +1,14 @@
 ;; show TAB
-(setq backward-delete-char-untabify-method 'nil)
-
-(global-whitespace-mode)
-(setq whitespace-style '(face tabs tab-mark trailing))
-(custom-set-faces
- '(whitespace-tab ((t (:foreground "#636363" :background "#303030")))))
-
-(setq whitespace-display-mappings
-      '((tab-mark 9 [124 9] [92 9])))
+(use-package whitespace
+  :ensure nil
+  :hook (prog-mode . whitespace-mode)
+  :config
+  (setq whitespace-style '(face tabs tab-mark trailing))
+  (setq backward-delete-char-untabify-method 'nil)
+  (custom-set-faces
+   '(whitespace-tab ((t (:foreground "#636363" :background "#303030")))))
+  (setq whitespace-display-mappings
+        '((tab-mark 9 [124 9] [92 9]))))
 
 (use-package flycheck
   :ensure t

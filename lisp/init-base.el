@@ -98,8 +98,7 @@
               tab-width 4
               indent-tabs-mode nil)     ; Permanently indent with spaces, never with TABs
 
-(setq visible-bell t
-      inhibit-compacting-font-caches t  ; Don’t compact font caches during GC
+(setq inhibit-compacting-font-caches t  ; Don’t compact font caches during GC
       make-backup-files nil             ; Forbide to make backup files
       auto-save-default nil             ; Disable auto save
 

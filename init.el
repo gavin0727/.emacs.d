@@ -53,6 +53,7 @@
 (require 'init-vcs)
 (require 'init-edit)
 (require 'init-window)
+(require 'init-dired)
 (require 'init-prog)
 
 (when (file-exists-p custom-file)
