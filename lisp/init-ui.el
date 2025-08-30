@@ -28,15 +28,11 @@
 (use-package doom-modeline
   :ensure t
   :init
-  (setq doom-modeline-time t
-        doom-modeline-time-icon t)
+  (setq doom-modeline-time t)
   :hook (after-init . doom-modeline-mode)
   :config
-  ;; 启用系统时间显示
+  (setq display-time-24hr-format t)
   (display-time-mode 1))
-
-(use-package nerd-icons
-  :ensure t)
 
 ;; Smooth scrolling
 (setq scroll-step 1

@@ -36,26 +36,39 @@
 
 (use-package company
   :ensure t
-  :hook (after-init . global-company-mode)
+  :init (global-company-mode)
   :config
-  (setq company-minimum-prefix-length 1
-        company-idle-delay 0.0
-        company-tooltip-align-annotations t))
+  (setq company-minimum-prefix-length 1)
+  (setq company-tooltip-align-annotations t)
+  (setq company-idle-delay 0.3)
+  (setq company-show-numbers t)
+  (setq company-selection-wrap-around t)
+  (setq company-transformers '(company-sort-by-occurrence))
+  (setq company-backends
+        '((company-files
+           company-keywords
+           company-etags
+           company-dabbrev-code)
+          company-dabbrev)))
 
-(use-package lsp-mode
+(use-package counsel-etags
   :ensure t
-  :hook ((c-mode c++-mode) . lsp-deferred)
-  :commands lsp
+  :bind (("M-." . counsel-etags-find-tag-at-point))
+  :init
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook
+                        'counsel-etags-virtual-update-tags 'append 'local)))
   :config
-  (setq lsp-prefer-flymake nil
-        lsp-enable-snippet nil
-        lsp-idle-delay 0.2
-        lsp-clients-clangd-args '("--header-insertion=never"
-                                  "--cross-file-rename")
-        lsp-enable-on-type-formatting nil
-        lsp-enable-indentation nil
-        lsp-enable-symbol-highlighting nil
-        lsp-headerline-breadcrumb-icons-enable nil))
+  (setq tags-revert-without-query t)
+  (setq counsel-etags-update-interval 60)
+  (push "build" counsel-etags-ignore-directories)
+
+  (defun my/counsel-etags-recenter (&rest _)
+    (recenter))
+  (advice-add 'counsel-etags-find-tag-at-point :after #'my/counsel-etags-recenter))
+
+
 
 (require 'init-c)
 (require 'init-elisp)
