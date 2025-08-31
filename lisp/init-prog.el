@@ -10,14 +10,6 @@
   (setq whitespace-display-mappings
         '((tab-mark 9 [124 9] [92 9]))))
 
-(use-package flycheck
-  :ensure t
-  :config
-  (setq truncate-lines nil)
-  :hook
-  (c-mode . flycheck-mode)
-  (c++-mode . flycheck-mode))
-
 ;; xref
 (use-package xref
   :ensure nil
