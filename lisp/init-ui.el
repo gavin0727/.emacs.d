@@ -27,10 +27,10 @@
 
 (use-package doom-modeline
   :ensure t
-  :init
-  (setq doom-modeline-time t)
   :hook (after-init . doom-modeline-mode)
   :config
+  (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+  (setq doom-modeline-time t)
   (setq display-time-24hr-format t)
   (display-time-mode 1))
 
