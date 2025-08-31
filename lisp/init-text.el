@@ -125,8 +125,4 @@
                               (python     . t)
                               (shell      . t))))
 
-(use-package org-bullets
-  :ensure t
-  :hook (org-mode . org-bullets-mode))
-
 (provide 'init-text)

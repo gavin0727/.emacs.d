@@ -1,10 +1,3 @@
-(set-face-attribute 'default nil
-                     :font "JetBrainsMonoNL NF-16")
-
-(dolist (charset '(kana han cjk-misc bopomofo))
-  (set-fontset-font t charset (font-spec :family "霞鹜文楷"
-                                         :size 24)))
-
 ;; Highlight matching parens
 (use-package paren
   :ensure nil

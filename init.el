@@ -38,5 +38,6 @@
 (require 'init-edit)
 (require 'init-text)
 (require 'init-window)
+(require 'init-dired)
 (when (file-exists-p custom-file)
   (load custom-file))
