@@ -10,6 +10,9 @@
   (gcmh-idle-delay 10)
   (gcmh-high-cons-threshold #x6400000)) ;; 100 MB
 
+(use-package magit
+  :ensure t)
+
 ;; Move to the beginning/end of line or code
 (use-package mwim
   :bind (([remap move-beginning-of-line] . mwim-beginning)
