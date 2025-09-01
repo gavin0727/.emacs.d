@@ -13,6 +13,11 @@
 (use-package magit
   :ensure t)
 
+;; Pixel alignment for org/markdown tables
+(use-package valign
+  :ensure t
+  :hook ((markdown-mode org-mode) . valign-mode))
+
 ;; Move to the beginning/end of line or code
 (use-package mwim
   :bind (([remap move-beginning-of-line] . mwim-beginning)

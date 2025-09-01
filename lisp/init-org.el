@@ -1,22 +1,3 @@
-;; Pixel alignment for org/markdown tables
-(use-package valign
-  :ensure t
-  :hook ((markdown-mode org-mode) . valign-mode))
-
-;; The markdown mode is awesome! unbeatable
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\(?:\\.md\\)?\\'" . gfm-mode)
-  :hook (markdown-mode . visual-line-mode)
-  :custom
-  (markdown-header-scaling t)
-  (markdown-enable-wiki-links t)
-  (markdown-italic-underscore t)
-  (markdown-asymmetric-header t)
-  (markdown-gfm-uppercase-checkbox t)
-  (markdown-enable-prefix-prompts nil)
-  (markdown-fontify-code-blocks-natively t))
-
 (use-package org
   :ensure nil
   :hook (org-mode . visual-line-mode)
@@ -34,25 +15,25 @@
   (org-imenu-depth 4)
   (org-clone-delete-id t)
   (org-use-sub-superscripts '{})
+  (org-export-with-sub-superscripts '{})
   (org-yank-adjusted-subtrees t)
   (org-ctrl-k-protect-subtree 'error)
   (org-fold-catch-invisible-edits 'show-and-error)
   ;; call C-c C-o explicitly
   (org-return-follows-link nil)
   ;; todo
-  (org-todo-keywords '((sequence "TODO(t)" "HOLD(h!)" "WIP(i!)" "WAIT(w!)" "|" "DONE(d!)" "CANCELLED(c@/!)")))
+  (org-todo-keywords '((sequence "TODO(t)" "PREPARE(p!)" "WIP(i!)" "|" "DONE(d!)" "CANCELLED(c@/!)")))
   (org-todo-keyword-faces '(("TODO"       :foreground "#7c7c75" :weight bold)
-                            ("HOLD"       :foreground "#feb24c" :weight bold)
+                            ("PREPARE"    :foreground "#feb24c" :weight bold)
                             ("WIP"        :foreground "#0098dd" :weight bold)
-                            ("WAIT"       :foreground "#9f7efe" :weight bold)
                             ("DONE"       :foreground "#50a14f" :weight bold)
                             ("CANCELLED"  :foreground "#ff6480" :weight bold)))
   (org-use-fast-todo-selection 'expert)
   (org-enforce-todo-dependencies t)
   (org-enforce-todo-checkbox-dependencies t)
   (org-priority-faces '((?A :foreground "red")
-                        (?B :foreground "orange")
-                        (?C :foreground "yellow")))
+                        (?B :foreground "yellow")
+                        (?C :foreground "green")))
   (org-global-properties '(("EFFORT_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00")
                            ("APPT_WARNTIME_ALL" . "0 5 10 15 20 25 30 45 60")
                            ("STYLE_ALL" . "habit")))
@@ -117,4 +98,11 @@
                               (python     . t)
                               (shell      . t))))
 
-(provide 'init-text)
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+
+(provide 'init-org)
