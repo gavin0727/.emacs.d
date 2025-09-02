@@ -5,7 +5,8 @@
   ;; C-' to select isearch-candidate with avy
   :hook (after-init . avy-setup-default)
   :bind (("M-j" . nil)
-         ("M-j M-j" . avy-goto-char-timer))
+         ("M-j M-j" . avy-goto-char-timer)
+         ("M-j M-l" . avy-goto-line))
   :custom
   (avy-background t)
   (avy-all-windows nil)

@@ -5,6 +5,7 @@
   :custom
   (show-paren-when-point-inside-paren t)
   (show-paren-when-point-in-periphery t))
+
 ;; Colorize color names in buffers
 (use-package colorful-mode
   :diminish

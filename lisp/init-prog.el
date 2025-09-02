@@ -1,3 +1,11 @@
+;; smart comment
+(use-package prog-mode
+  :ensure nil
+  :hook
+  (prog-mode . (lambda ()
+                 (local-unset-key (kbd "C-c C-c"))
+                 (local-set-key (kbd "C-c C-c") #'comment-dwim))))
+
 ;; show TAB
 (use-package whitespace
   :ensure nil
@@ -5,8 +13,9 @@
   :config
   (setq whitespace-style '(face tabs tab-mark trailing))
   (setq backward-delete-char-untabify-method 'nil)
-  (custom-set-faces
-   '(whitespace-tab ((t (:foreground "#636363" :background "#303030")))))
+  (set-face-attribute 'whitespace-tab nil
+                      :foreground "#636363"
+                      :background (face-background 'default nil t))
   (setq whitespace-display-mappings
         '((tab-mark 9 [124 9] [92 9]))))
 
@@ -26,6 +35,7 @@
   (xref-show-xrefs-function #'xref-show-definitions-completing-read)
   (xref-show-definitions-function #'xref-show-definitions-completing-read))
 
+;; auto complete
 (use-package company
   :ensure t
   :init (global-company-mode)
@@ -43,6 +53,7 @@
            company-dabbrev-code)
           company-dabbrev)))
 
+;; code navi
 (use-package counsel-etags
   :ensure t
   :bind (("M-." . counsel-etags-find-tag-at-point))
@@ -59,7 +70,6 @@
   (defun my/counsel-etags-recenter (&rest _)
     (recenter))
   (advice-add 'counsel-etags-find-tag-at-point :after #'my/counsel-etags-recenter))
-
 
 
 (require 'init-c)
