@@ -40,16 +40,14 @@
   :ensure t
   :init (global-company-mode)
   :config
-  (setq company-minimum-prefix-length 1)
+  (setq company-minimum-prefix-length 3)
   (setq company-tooltip-align-annotations t)
   (setq company-idle-delay 0.3)
   (setq company-show-numbers t)
   (setq company-selection-wrap-around t)
   (setq company-transformers '(company-sort-by-occurrence))
   (setq company-backends
-        '((company-files
-           company-keywords
-           company-etags
+        '((company-etags
            company-dabbrev-code)
           company-dabbrev)))
 
