@@ -15,8 +15,7 @@
                    :background nil
                    :height 140
                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+  :hook (after-init . global-blamer-mode))
 
 (use-package magit
   :ensure t)
