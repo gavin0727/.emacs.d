@@ -1,3 +1,13 @@
+(use-package display-fill-column-indicator
+  :ensure nil
+  :hook (prog-mode . (lambda ()
+                       (setq display-fill-column-indicator-column 120)
+                       (display-fill-column-indicator-mode 1)))
+  :config
+  (set-face-attribute 'fill-column-indicator nil
+                      :foreground "#555555"
+                      :background nil))
+
 ;; smart comment
 (use-package prog-mode
   :ensure nil
