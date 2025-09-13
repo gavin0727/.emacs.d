@@ -1,0 +1,7 @@
+auto-save-list/
+eln-cache/
+eshell/
+elpa/
+var/
+etc/
+custom.el
