@@ -1,4 +1,5 @@
 auto-save-list/
+/tree-sitter/
 eln-cache/
 eshell/
 elpa/

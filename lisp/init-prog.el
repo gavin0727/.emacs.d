@@ -79,6 +79,22 @@
     (recenter))
   (advice-add 'counsel-etags-find-tag-at-point :after #'my/counsel-etags-recenter))
 
+(use-package treesit
+  :ensure nil
+  :when (and (fboundp 'treesit-available-p)
+             (treesit-available-p))
+  :config
+  (setq treesit-font-lock-level 4)
+  :init
+  (setq treesit-language-source-alist
+        '((bash       . ("https://github.com/tree-sitter/tree-sitter-bash" "v0.21.0"))
+          (c          . ("https://github.com/tree-sitter/tree-sitter-c" "v0.20.7"))
+          (cpp        . ("https://github.com/tree-sitter/tree-sitter-cpp" "v0.21.0"))))
+
+  (add-to-list 'major-mode-remap-alist '(sh-mode         . bash-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(c-mode          . c-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(c++-mode        . c++-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(c-or-c++-mode   . c-or-c++-ts-mode)))
 
 (require 'init-c)
 (require 'init-elisp)
