@@ -27,7 +27,7 @@
                       :foreground "#636363"
                       :background (face-background 'default nil t))
   (setq whitespace-display-mappings
-        '((tab-mark 9 [124 9] [92 9]))))
+        '((tab-mark 9 [8677 9] [92 9]))))
 
 ;; xref
 (use-package xref

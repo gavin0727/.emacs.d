@@ -63,4 +63,12 @@
 
   (my-aw-keys-mode 1))
 
+(defun kill-buffer-smart ()
+  "Kill current buffer and close its window if more than one window exists."
+  (interactive)
+  (kill-buffer)
+  (unless (one-window-p)
+    (delete-window)))
+(global-set-key (kbd "C-x k") #'kill-buffer-smart)
+
 (provide 'init-window)

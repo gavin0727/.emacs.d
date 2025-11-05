@@ -55,6 +55,7 @@
 (require 'init-window)
 (require 'init-dired)
 (require 'init-prog)
+(require 'init-terminal)
 (require 'init-markdown)
 (require 'init-org)
 

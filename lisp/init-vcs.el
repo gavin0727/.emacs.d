@@ -1,7 +1,9 @@
 (use-package project
   :ensure nil
   :config
-  (setq project-switch-commands #'project-find-file))
+  (setq project-switch-commands #'project-find-file)
+  :bind (:map project-prefix-map
+              ("S" . project-shell)))
 
 (use-package blamer
   :ensure t
