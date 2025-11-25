@@ -1,3 +1,7 @@
+(use-package clipetty
+  :ensure t
+  :bind ("M-w" . clipetty-kill-ring-save))
+
 (use-package amx
   :ensure t
   :init (amx-mode))
