@@ -1,3 +1,8 @@
+(use-package project
+  :ensure nil
+  :config
+  (setq project-switch-commands #'project-find-file))
+
 (use-package amx
   :ensure t
   :init (amx-mode))

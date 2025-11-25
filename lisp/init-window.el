@@ -34,4 +34,19 @@
 
   (my-aw-keys-mode 1))
 
+(defun kill-buffer-with-window ()
+  "Kill current buffer and close its window if more than one window exists."
+  (interactive)
+  (kill-buffer)
+  (unless (one-window-p)
+    (delete-window)))
+
+(defun kill-buffer-without-window ()
+  "Kill current buffer without confirm."
+  (interactive)
+  (kill-buffer))
+
+(global-set-key (kbd "C-x k") #'kill-buffer-without-window)
+(global-set-key (kbd "C-x K") #'kill-buffer-with-window)
+
 (provide 'init-window)

@@ -24,7 +24,8 @@
   (display-line-numbers-width-start t))
 
 (electric-pair-mode t)
-(desktop-save-mode t)
+(when (display-graphic-p)
+  (add-to-list 'default-frame-alist '(fullscreen . maximized)))
 ;; No lock files
 (setq create-lockfiles nil)
 
