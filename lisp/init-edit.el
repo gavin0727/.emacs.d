@@ -47,7 +47,8 @@
          ("C-x C-f" . counsel-find-file)
          ("C-c f"   . counsel-recentf)
          ("C-c e"   . counsel-git)
-         ("C-c s"   . counsel-rg))
+         ("C-c s"   . counsel-rg)
+         ("M-g i"   . counsel-imenu))
   :config
   (setq counsel-rg-base-command
         "rg -S --no-heading --line-number %s --glob '!TAGS'"))

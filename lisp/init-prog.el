@@ -8,6 +8,10 @@
                       :foreground "#555555"
                       :background nil))
 
+(use-package breadcrumb
+  :ensure t
+  :hook (prog-mode . breadcrumb-local-mode))
+
 ;; smart comment
 (use-package prog-mode
   :ensure nil
