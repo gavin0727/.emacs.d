@@ -102,5 +102,6 @@
 
 (require 'init-c)
 (require 'init-elisp)
+(require 'init-rust)
 
 (provide 'init-prog)
